@@ -1,7 +1,7 @@
 package org.example;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.Collections.emptyList;
 
@@ -11,13 +11,9 @@ public class Clutter {
             return emptyList();
         }
 
-        List<String> result = new ArrayList<>();
-        for (String item : source) {
-            if (matches(item, subString)) {
-                result.add(item);
-            }
-        }
-        return result;
+        return source.stream()
+                .filter(item -> matches(item, subString))
+                .collect(Collectors.toList());
     }
 
     private static boolean matches(String item, String subString) {
