@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,12 +18,7 @@ public class Clutter {
     }
 
     private static boolean matches(String item, String subString) {
-        String[] words = item.split(" ");
-        for (String word : words) {
-            if (word.compareToIgnoreCase(subString) == 0) {
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(item.split(" "))
+                .anyMatch(word -> word.compareToIgnoreCase(subString) == 0);
     }
 }
