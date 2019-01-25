@@ -6,14 +6,14 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 public class Clutter {
-    public static List<String> findStringsContaining(final List<String> source, final String subString) {
+    public static List<String> findStringsContaining(List<String> source, String subString) {
         if (subString == null || subString.isEmpty()) {
             return emptyList();
         }
 
-        final List<String> result = new ArrayList<>();
+        List<String> result = new ArrayList<>();
         for (String item : source) {
-            final String[] words = item.split(" ");
+            String[] words = item.split(" ");
             for (String word : words) {
                 if (word.compareToIgnoreCase(subString) == 0) {
                     result.add(item);
