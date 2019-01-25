@@ -13,13 +13,20 @@ public class Clutter {
 
         List<String> result = new ArrayList<>();
         for (String item : source) {
-            String[] words = item.split(" ");
-            for (String word : words) {
-                if (word.compareToIgnoreCase(subString) == 0) {
-                    result.add(item);
-                }
+            if (matches(item, subString)) {
+                result.add(item);
             }
         }
         return result;
+    }
+
+    private static boolean matches(String item, String subString) {
+        String[] words = item.split(" ");
+        for (String word : words) {
+            if (word.compareToIgnoreCase(subString) == 0) {
+                return true;
+            }
+        }
+        return false;
     }
 }
