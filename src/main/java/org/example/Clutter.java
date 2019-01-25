@@ -19,6 +19,10 @@ public class Clutter {
 
     private static boolean matches(String item, String subString) {
         return Arrays.stream(item.split(" "))
-                .anyMatch(word -> word.compareToIgnoreCase(subString) == 0);
+                .anyMatch(word -> wordMatches(word, subString));
+    }
+
+    private static boolean wordMatches(String word, String subString) {
+        return word.compareToIgnoreCase(subString) == 0;
     }
 }
